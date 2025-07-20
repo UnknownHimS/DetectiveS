@@ -6,4 +6,4 @@ services:
     startCommand: python server.py
     envVars:
       - key: OPENAI_API_KEY
-        value: your-openai-api-key
+        value: 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
