@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # allow frontend to access this server
 
-openai.api_key = os.getenv("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")  # store your key in Render environment
+openai.api_key = os.getenv("OPENAI_API_KEY")  # store your key in Render environment
 
 @app.route("/chat", methods=["POST"])
 def chat():
