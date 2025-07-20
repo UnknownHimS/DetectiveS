@@ -1,27 +1,35 @@
 from flask import Flask, request, jsonify
 import openai
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
+# Set your OpenAI API Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+@app.route("/")
+def home():
+    return "DetectiveS AI is running."
 
 @app.route("/ask", methods=["POST"])
 def ask():
-    data = request.get_json()
+    data = request.json
     prompt = data.get("prompt", "")
 
+    if not prompt:
+        return jsonify({"response": "No prompt provided."}), 400
+
     try:
-        response = openai.ChatCompletion.create(
+        completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=200,
-            temperature=0.7
+            messages=[{"role": "user", "content": prompt}]
         )
-        result = response['choices'][0]['message']['content']
-        return jsonify({"response": result})
+        reply = completion.choices[0].message.content.strip()
+        return jsonify({"response": reply})
     except Exception as e:
-        return jsonify({"error": str(e)})
+        return jsonify({"response": f"Error: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
+    app.run(debug=True)
