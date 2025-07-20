@@ -1,0 +1,292 @@
+body{
+    background-color:#1b1f23;
+    
+}
+.wallcon{
+    position: absolute;
+    
+    left:27.8rem;
+    bottom:17rem;
+    height: 20rem;
+    width: 42rem;
+    border:8px solid;
+    box-shadow: 0px 0px 15px;
+}
+
+#name{
+    color: black;
+    position: absolute;
+    left: 5.5rem;
+    bottom:38.1rem;
+    text-shadow: 2px 3px 5px;
+    z-index: 5;
+}
+#logo1{
+    position:absolute;
+    z-index:-1;
+    background-image: url("k.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:22rem;
+    width:22rem;
+    border:none;
+    transition: transform 1.3s ease-in;
+    
+   
+}
+#logo2{
+    position:absolute;
+    height:20rem;
+    width: 22rem;
+    background:red;
+    mix-blend-mode:color-burn;
+    opacity: 80%;
+    transition: transform 1.3s ease-in;
+}
+#blackline{
+    position:absolute;
+    height:20rem;
+    width:8rem;
+    background-color:#1b1f23;
+    left:18.8rem;
+    transition: transform 1.3s ease-in;
+    z-index:3;
+   
+}
+#blackline2{
+    position:absolute;
+    height:20rem;
+    width:7rem;
+    background-color: #1b1f23;
+    left:12.5rem;
+    bottom:36.5rem;
+    transform:rotate(-40deg);
+    z-index:3;
+}
+#blackline3{
+    position:absolute;
+    height:33rem;
+    width:7.5rem;
+    box-shadow:inset 0px 0px 65px #00f0ff,0px 0px 15px;
+
+    background: #1b1f23;
+    left:6rem;
+    bottom:3.5rem;
+    transform:rotate(-90deg);
+    z-index:3;
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.about{
+    position:absolute;
+    color:black;
+    font-size: 1.8rem;
+    font-weight: 800;
+    left:63rem;
+    text-shadow:1.5px 1.5px 5px;
+
+}
+.Search{
+    position:absolute;
+    color:black;
+    font-size: 1.8rem;
+    font-weight: 800;
+    left:45rem;
+    text-shadow: 2px 2px 5px brown;
+}
+.Live{
+    position:absolute;
+    color:black;
+    font-size: 1.8rem;
+    font-weight: 800;
+    left:30rem;
+    text-shadow:2px 2px 5px blue;
+}
+
+
+
+.Live:hover ~ #logo1,
+.Live:hover ~ #logo2{
+    transform: rotate(-32.5deg);  
+} 
+.Live:hover{
+    color:blue;
+}
+.Search:hover ~ #logo1,
+.Search:hover ~ #logo2
+{
+    transform: rotate(-30deg);
+    
+} 
+.Search:hover{
+    color:red;
+}
+.about:hover ~ #logo1,
+.about:hover ~ #logo2{
+    transform: rotate(-29.5deg);
+}
+.about:hover{
+    text-shadow: 0px 0px 15px brown;
+}
+.backcolor{
+    height: auto;
+    width: auto;
+    background: black;
+}
+.backcolor2{
+  position:absolute;
+  height: 26rem;
+  width:5rem;
+  left:74.5rem;
+  
+  box-shadow: 1px 1px 30px;
+  border-radius: 10px;
+  border-end-end-radius: 0px;
+  border-bottom-left-radius: 0px;
+  
+  animation-iteration-count:infinite;
+  animation-delay:0;
+  animation-duration:10s;
+  animation-name: shab;
+  z-index:4;
+} 
+
+ @keyframes shab {
+    10%{
+      height: 24rem;
+      
+    }
+    20%{
+      height:21.5rem;
+    }
+    30%{
+      height: 19rem;
+    }
+    40%{
+      height: 16.5rem;  
+    }
+    50%{
+      height: 14rem;  
+    }
+    60%{
+      height:11.5rem; 
+    }
+    70%{
+      height:9rem;
+      
+    }
+    80%{
+      
+      height:6.5rem;
+    }
+    90%{
+      height:4rem;
+    }
+   
+ }
+
+.backcolor5{
+  position:absolute;
+  height: 26.5rem;
+  width:5rem;
+  left:74.5rem;
+ 
+  box-shadow: inset 1px 1px 97px #00f0ff, 0px 0px 5px  #00f0ff;
+  border-radius: 10px;
+  z-index:3;
+  
+}
+.abscnb{
+    position:absolute;
+    top:5rem;
+    left:12rem;
+    height:25rem;
+    width: 45rem;
+    border:12px solid;
+    box-shadow:2px 2px 15px;
+}
+.container2{
+    position:absolute;
+    height:50rem;
+    width:70rem;
+    border-color:;
+    border:10px solid;
+    border-radius: 20px;
+    top:28rem;
+    left:7rem;
+    box-shadow:inset 0px 0px 580px  black, 2px 2px 15px  ;
+    
+}
+.half-circle {
+  position:absolute;
+  width: 14rem;
+  height: 230px;
+  border:60px solid;
+  border-color: #1b1f23;
+ 
+  border-radius:180px;
+  
+  box-shadow: 0px 0px 20px;
+  transform:rotate(-180deg);
+  top:-28rem;
+  right:55.5rem;
+  z-index:4;
+
+
+}
+.half-circle2 {
+  position:absolute;
+  width: 18rem;
+  height: 280px;
+  border:79px solid;
+  border-color: #1b1f23;
+  border-radius:180px;
+  
+  
+ 
+  transform:rotate(-180deg);
+  top:-32rem;
+  right:51.5rem;
+  z-index:3;
+
+
+}
+#blackline4{
+    position:absolute;
+    height:33rem;
+    width:7.5rem;
+    box-shadow:inset 0px 0px 65px #1b1f23;
+    background: #1b1f23;
+    left:6rem;
+    bottom:27rem;
+    transform:rotate(-90deg);
+    z-index:3;
+}
+  #weather {
+      position: absolute;
+      top: 459px;
+      right: 460px;
+      font-size: 1rem;
+      text-shadow: 2px 2px 3px black;
+      padding: 15px;
+      border-radius: 10px; 
+      color:rgb(255, 255, 255, 0.7);
+      
+      
+      box-shadow: inset 0px 0px 45px #00f0ff, 0px 0px 2px blue , inset 0px 0px 5px white;
+      font-family: sans-serif;
+      z-index:4;
+  }
+  .blck{
+    position:absolute;
+    height:4rem;
+    width:70.5rem;
+    background:black;
+    z-index:3;
+    top:28.5rem;
+    left:7.6rem;
+  }
+ 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mr. Detective</title>
+  <link href="j.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div>
+    <h1 id="name">Mr. Detective</h1>
+
+    <iframe 
+      id="timeBasedVideo" 
+      class="wallcon" 
+      width="640" height="360"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+
+    <a href ="#" class="about" style="text-decoration: none;">About</a>
+    <a href ="j.html" class="Search" style="text-decoration: none;">Search Identity</a>
+    <a href ="#" class="Live" style="text-decoration: none;">Live Traffic</a>
+    <div id="blackline"></div>
+    <div id="blackline2"></div>
+    <img src="j.png" id="logo1">
+    <img src="k.png" id="logo2">
+  </div>
+
+  <script>
+    const hour = new Date().getHours(); // 0–23
+    const iframe = document.getElementById("timeBasedVideo");
+
+    let videoUrl = "";
+
+    if (hour >= 5 && hour < 12) {
+      // Morning
+      videoUrl = "https://www.youtube.com/embed/ZXyLYqWUffA?autoplay=1&mute=1&cc_load_policy=1";
+    } else if (hour >= 12 && hour < 18) {
+      // Afternoon
+      videoUrl = "https://www.youtube.com/embed/uALJaYIW2m0?autoplay=1&mute=1&cc_load_policy=1";
+    } else {
+      // Evening/Night
+      videoUrl = "https://www.youtube.com/embed/A0jIrtTXKQA?autoplay=1&mute=1&cc_load_policy=1";
+    }
+
+    iframe.src = videoUrl;
+  </script>
+  <div class="backcolor"></div>
+  <div class="backcolor2"></div>
+  <div class="backcolor5"></div>
+  <div id="weather">Loading weather...</div>
+  <div id="blackline3"></div>
+  <div id="blackline4"></div>
+  <div class="container2">
+  <div class="half-circle"></div>
+  <div class="half-circle2"></div>
+     <div id="crime-news">
+ <!-- start feedwind code -->
+  <script type="text/javascript"
+          src="https://feed.mikle.com/js/fw-loader.js"
+          preloader-text="Loading"
+          data-fw-param="174022/">
+  </script>
+ <!-- end feedwind code -->
+  </div>
+    </div>
+    <script>
+    fetch("https://api.weatherapi.com/v1/current.json?key=7b18f280f6634378bff132334251207&q=Las%20Pinas")
+      .then(response => response.json())
+      .then(data => {
+        const temp = data.current.temp_c;
+        const condition = data.current.condition.text;
+        document.getElementById("weather").textContent =
+          `Today's temperature in Las Piñas is ${temp}°C, ${condition.toLowerCase()}.`;
+      })
+      .catch(err => {
+        document.getElementById("weather").textContent = "Weather info not available.";
+      });
+  </script>
+
+   <div id="ph-info" style="position: absolute; background: transparent; top: 45rem; border:1px ; left: 757px; padding: 15px; border-radius: 10px;    font-family: sans-serif; box-shadow: inset 0px 0px 120px #00f0ff, 0px 0px 5px; width: 300px; z-index:4;">
+  <div id="ph-time" style="font-size: 1.3rem;">⏰ Time: --</div>
+  <div id="ph-date" style="margin-top: 5px;">📅 Date: --</div>
+  <div id="ph-holiday" style="margin-top: 5px;">🎉 Occasion: --</div>
+</div>
+
+<script>
+  const holidaysPH = {
+    "01-01": "New Year's Day",
+    "02-25": "EDSA People Power Revolution",
+    "04-09": "Araw ng Kagitingan",
+    "05-01": "Labor Day",
+    "06-12": "Independence Day",
+    "08-21": "Ninoy Aquino Day",
+    "08-26": "National Heroes Day",
+    "08-29": "Your Birthday 🎂 !",
+    "11-01": "All Saints' Day",
+    "11-30": "Bonifacio Day",
+    "12-25": "Christmas Day",
+    "12-30": "Rizal Day"
+    // Add more fixed-date holidays if you like
+  };
+
+  function updatePHInfo() {
+    const options = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', hour12: false };
+    const now = new Date();
+
+    const time = now.toLocaleTimeString('en-PH', options).slice(0,5);
+    const dateOptions = { timeZone: 'Asia/Manila', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const fullDate = now.toLocaleDateString('en-PH', dateOptions);
+
+    const mmdd = now.toLocaleDateString('en-PH', { timeZone: 'Asia/Manila', month: '2-digit', day: '2-digit' });
+
+    const holiday = holidaysPH[mmdd] || "No special occasion today";
+
+    document.getElementById("ph-time").textContent = "⏰ Time: " + time;
+    document.getElementById("ph-date").textContent = "📅 Date: " + fullDate;
+    document.getElementById("ph-holiday").textContent = "🎉 Occasion: " + holiday;
+  }
+
+  updatePHInfo();
+  setInterval(updatePHInfo, 60000); // Update every 1 min
+</script>
+<div class="blck">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Social Media Search</title>
+  <style type="text/css">
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Name in Social Media</h1>
+  <input type="text" id="nameInput" placeholder="Enter a name..." />
+  <br>
+  <button onclick="searchNow()">Search</button>
+
+  <script>
+    function searchNow() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) return;
+
+      const query = encodeURIComponent(name);
+      
+      const fbUrl = `https://www.facebook.com/search/top?q=${query}`;
+      const instaUrl = `https://www.instagram.com/explore/search/keyword/?q=${query}`;
+      const tiktokUrl = `https://www.tiktok.com/search?q=${query}`;
+
+      window.open(fbUrl, '_blank');
+      window.open(instaUrl, '_blank');
+      window.open(tiktokUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
