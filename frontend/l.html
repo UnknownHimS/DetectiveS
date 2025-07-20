@@ -1,78 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Detective Chat</title>
-  <style type="text/css">
+  <title>Detective's Assistant</title>
+  <style>
     body {
-      background: #111;
-      color: #eee;
       font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
       padding: 20px;
     }
-
-    #chatbox {
-      border: 1px solid #444;
-      padding: 10px;
-      height: 300px;
-      overflow-y: auto;
-      background: #222;
-      margin-bottom: 10px;
-    }
-
-    #userInput {
+    textarea {
       width: 100%;
-      padding: 10px;
-      border: none;
-      background: #333;
-      color: white;
+      height: 100px;
+      font-size: 16px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
     }
-
     button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #28a745;
-      color: white;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #444;
+      color: #fff;
       border: none;
       cursor: pointer;
+    }
+    #response {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background-color: #222;
+      padding: 10px;
+      border: 1px solid #555;
     }
   </style>
 </head>
 <body>
-  <h2>🕵️ Mr. Detective S</h2>
-  <div id="chatbox"></div>
-  <input type="text" id="userInput" placeholder="Type your message..." />
-  <button onclick="sendMessage()">Send</button>
+  <h1>Ask Detective S</h1>
+  <textarea id="input" placeholder="Enter your question..."></textarea><br>
+  <button onclick="sendQuery()">Ask</button>
+  <div id="response"></div>
 
   <script>
-    async function sendMessage() {
-      const input = document.getElementById("userInput");
-      const message = input.value;
-      if (!message) return;
+    async function sendQuery() {
+      const userInput = document.getElementById("input").value;
+      const responseBox = document.getElementById("response");
+      responseBox.textContent = "Loading...";
 
-      addMessage("🧑 You", message);
-      input.value = "";
-
-      const response = await fetch("http://localhost:5000/chat", {
+      const res = await fetch("https://detectives-server.onrender.com", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: userInput })
       });
 
-      const data = await response.json();
-      addMessage("🤖 Mr. Detective S", data.reply);
-    }
-
-    function addMessage(sender, text) {
-      const chatbox = document.getElementById("chatbox");
-      const msg = document.createElement("div");
-      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
-      chatbox.appendChild(msg);
-      chatbox.scrollTop = chatbox.scrollHeight;
+      const data = await res.json();
+      responseBox.textContent = data.response;
     }
   </script>
 </body>
 </html>
+
 
