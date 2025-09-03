@@ -35,11 +35,14 @@
   <h1>Search Name in Social Media</h1>
   <input type="text" id="nameInput" placeholder="Enter a name..." />
   <br>
-  <button onclick="searchNow()">Search</button>
+  <button id="button">Search</button>
 
   <script>
-    function searchNow() {
+    const button = document.getElementById("button");
+    
+    button.addEventListener("click", function(){ 
       const name = document.getElementById("nameInput").value.trim();
+ 
       if (!name) return;
 
       const query = encodeURIComponent(name);
@@ -51,9 +54,9 @@
       window.open(fbUrl, '_blank');
      
 
-    };
+    });
 
-    function searchNow2() {
+      button.addEventListener("click", function(){ 
       const name = document.getElementById("nameInput").value.trim();
       if (!name) return;
 
@@ -65,9 +68,9 @@
    
       window.open(instaUrl, '_blank');
       
-    };
+    }, 1000);
 
-    function searchNow3() {
+    button.addEventListener("click", function(){ 
       const name = document.getElementById("nameInput").value.trim();
       if (!name) return;
 
@@ -80,9 +83,10 @@
     
       
       window.open(tiktokUrl, '_blank');
-    };
+    }, 2000);
 
   </script>
 </body>
 </html>
+
 
