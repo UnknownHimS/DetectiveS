@@ -1,76 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Social Media Search</title>
-  <style type="text/css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
     body {
-      background-color: #111;
-      color: white;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0f111a;
+      color: #00ffea;
+      font-family: 'Orbitron', monospace, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
       text-align: center;
-      padding: 40px;
+      user-select: none;
     }
+    h1 {
+      font-weight: 500;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ffea;
+    }
+
     input {
-      padding: 10px;
-      width: 250px;
-      border-radius: 5px;
+      width: 280px;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      border-radius: 30px;
       border: none;
+      outline: none;
+      background: #001f27;
+      color: #00ffea;
+      box-shadow: 0 0 8px #00ffea;
+      transition: box-shadow 0.3s ease;
     }
+    input::placeholder {
+      color: #008b85;
+    }
+    input:focus {
+      box-shadow: 0 0 20px #00ffea;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     button {
-      padding: 10px 20px;
-      margin-top: 10px;
+      background: #00ffea;
+      color: #0f111a;
       border: none;
-      border-radius: 5px;
-      background-color: #4CAF50;
-      color: white;
+      border-radius: 30px;
+      padding: 15px 30px;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
+      box-shadow:
+        0 0 5px #00ffea,
+        0 0 10px #00ffea,
+        0 0 20px #00ffea,
+        0 0 40px #00ffea;
+      transition: 
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.4s ease;
+      user-select: none;
     }
-    button:hover {
-      background-color: #45a049;
+    button:hover, button:focus {
+      background: #00cca7;
+      color: #000;
+      box-shadow:
+        0 0 15px #00cca7,
+        0 0 30px #00cca7,
+        0 0 60px #00cca7,
+        0 0 100px #00cca7;
+      outline: none;
+    }
+    button:active {
+      transform: scale(0.96);
+      box-shadow: 0 0 10px #00cca7;
+    }
+
+    @media (max-width: 500px) {
+      input {
+        width: 90vw;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      button {
+        width: 90vw;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Search Name in Social Media</h1>
-  <input type="text" id="nameInput" placeholder="Enter a name..." />
-  <br>
-  <button id="button">Search</button>
+  <input type="text" id="nameInput" placeholder="Enter a name..." autocomplete="off" />
+  <div class="buttons">
+    <button id="fbButton">Facebook</button>
+    <button id="instaButton">Instagram</button>
+    <button id="tiktokButton">TikTok</button>
+  </div>
 
-<button id="fbButton">Search Facebook</button>
-<button id="instaButton">Search Instagram</button>
-<button id="tiktokButton">Search TikTok</button>
+  <script>
+    const nameInput = document.getElementById("nameInput");
 
-<script>
-  function openSocial(url) {
-    window.open(url, '_blank');
-  }
+    function openSocial(url) {
+      window.open(url, '_blank');
+    }
 
-  const nameInput = document.getElementById("nameInput");
+    document.getElementById("fbButton").addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (!name) return alert('Please enter a name.');
+      openSocial(`https://www.facebook.com/search/top?q=${encodeURIComponent(name)}`);
+    });
 
-  document.getElementById("fbButton").addEventListener("click", () => {
-    const name = nameInput.value.trim();
-    if (!name) return;
-    openSocial(`https://www.facebook.com/search/top?q=${encodeURIComponent(name)}`);
-  });
+    document.getElementById("instaButton").addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (!name) return alert('Please enter a name.');
+      openSocial(`https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(name)}`);
+    });
 
-  document.getElementById("instaButton").addEventListener("click", () => {
-    const name = nameInput.value.trim();
-    if (!name) return;
-    openSocial(`https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(name)}`);
-  });
-
-  document.getElementById("tiktokButton").addEventListener("click", () => {
-    const name = nameInput.value.trim();
-    if (!name) return;
-    openSocial(`https://www.tiktok.com/search?q=${encodeURIComponent(name)}`);
-  });
-</script>
-
-
+    document.getElementById("tiktokButton").addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (!name) return alert('Please enter a name.');
+      openSocial(`https://www.tiktok.com/search?q=${encodeURIComponent(name)}`);
+    });
+  </script>
 </body>
 </html>
-
-
-
-
