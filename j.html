@@ -37,56 +37,36 @@
   <br>
   <button id="button">Search</button>
 
-  <script>
-    const button = document.getElementById("button");
-    
-    button.addEventListener("click", function(){ 
-      const name = document.getElementById("nameInput").value.trim();
- 
-      if (!name) return;
+<script>
+  const button = document.getElementById("button");
 
-      const query = encodeURIComponent(name);
-      
-      const fbUrl = `https://www.facebook.com/search/top?q=${query}`;
-      
+  button.addEventListener("click", function() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) return;
 
+    const query = encodeURIComponent(name);
 
-      window.open(fbUrl, '_blank');
-     
+    const fbUrl = `https://www.facebook.com/search/top?q=${query}`;
+    const instaUrl = `https://www.instagram.com/explore/search/keyword/?q=${query}`;
+    const tiktokUrl = `https://www.tiktok.com/search?q=${query}`;
 
-    });
+    // Open Facebook immediately
+    window.open(fbUrl, '_blank');
 
-      button.addEventListener("click", function(){ 
-      const name = document.getElementById("nameInput").value.trim();
-      if (!name) return;
-
-      const query = encodeURIComponent(name);
-      
-   
-      const instaUrl = `https://www.instagram.com/explore/search/keyword/?q=${query}`;
-   
-   
+    // Open Instagram after 1 second
+    setTimeout(() => {
       window.open(instaUrl, '_blank');
-      
     }, 1000);
 
-    button.addEventListener("click", function(){ 
-      const name = document.getElementById("nameInput").value.trim();
-      if (!name) return;
-
-      const query = encodeURIComponent(name);
-      
- 
-
-      const tiktokUrl = `https://www.tiktok.com/search?q=${query}`;
-
-    
-      
+    // Open TikTok after 2 seconds
+    setTimeout(() => {
       window.open(tiktokUrl, '_blank');
     }, 2000);
+  });
+</script>
 
-  </script>
 </body>
 </html>
+
 
 
