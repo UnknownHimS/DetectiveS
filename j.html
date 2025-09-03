@@ -45,13 +45,44 @@
       const query = encodeURIComponent(name);
       
       const fbUrl = `https://www.facebook.com/search/top?q=${query}`;
-      const instaUrl = `https://www.instagram.com/explore/search/keyword/?q=${query}`;
-      const tiktokUrl = `https://www.tiktok.com/search?q=${query}`;
+      
+
 
       window.open(fbUrl, '_blank');
+     
+
+    };
+
+    function searchNow2() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) return;
+
+      const query = encodeURIComponent(name);
+      
+   
+      const instaUrl = `https://www.instagram.com/explore/search/keyword/?q=${query}`;
+   
+   
       window.open(instaUrl, '_blank');
+      
+    };
+
+    function searchNow3() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) return;
+
+      const query = encodeURIComponent(name);
+      
+ 
+
+      const tiktokUrl = `https://www.tiktok.com/search?q=${query}`;
+
+    
+      
       window.open(tiktokUrl, '_blank');
-    }
+    };
+
   </script>
 </body>
 </html>
+
